@@ -11,7 +11,7 @@ class DepthFirstIterativeSearcher[T] extends Searcher[T]:
     val stack = mutable.Stack(start)
 
     def popUntilEnd =
-      while (stack.nonEmpty && stack.head != end)
+      while stack.nonEmpty && stack.head != end do
         val key = stack.pop()
         if !searched(key) then
           searched += key
