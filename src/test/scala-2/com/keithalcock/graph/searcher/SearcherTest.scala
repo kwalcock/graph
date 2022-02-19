@@ -4,7 +4,6 @@ import com.keithalcock.graph.Types.Graph
 import com.keithalcock.graph.common.utils.Test
 
 class SearcherTest extends Test {
-
   val graph: Graph[Int] = Map(
     0 -> Set(0, 1, 2, 4),
     1 -> Set(2, 3, 4),
@@ -17,8 +16,6 @@ class SearcherTest extends Test {
     behavior of searcher.getClass.getName
 
     it should "search" in {
-      val searcher = new DepthFirstRecursiveSearcher[Int]()
-
       searcher.search(graph, -1, 4) should be (false)
       searcher.search(graph, 4, -1) should be (false)
       searcher.search(graph, -1, -1) should be (false)
@@ -35,5 +32,5 @@ class SearcherTest extends Test {
   }
 
   test(new DepthFirstRecursiveSearcher())
-  test(new BreadthFirstSearcher())
+//  test(new BreadthFirstSearcher())
 }
