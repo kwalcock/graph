@@ -10,18 +10,15 @@ class DepthFirstIterativeSearcher[T] extends Searcher[T]:
     val searched = mutable.Set.empty[T]
     val stack = mutable.Stack(start)
 
+    def popUntilEnd =
+      while (stack.nonEmpty && stack.head != end)
+        val key = stack.pop()
+        if !searched(key) then
+          searched += key
+          stack ++= graph(key)
+      stack
+
     require(isValid(graph))
     graph.contains(start) &&
-        graph.contains(end) && {
-          while (stack.nonEmpty && {
-            val key = stack.pop()
-            println(s"Checking ${key.toString}")
-            if key == end then false
-            else if searched(key) then true
-            else
-              searched += key
-              stack.pushAll(graph(key).reverse)
-              true
-          }) ()
-          stack.nonEmpty
-        }
+        graph.contains(end) &&
+        popUntilEnd.nonEmpty

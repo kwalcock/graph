@@ -1,3 +1,3 @@
 package com.keithalcock.graph
 
-type Graph[T] = Map[T, List[T]]
+type Graph[T] = Map[T, Set[T]]
