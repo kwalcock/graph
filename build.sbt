@@ -4,14 +4,17 @@ import org.clulab.sbt.Resolvers
 name := "graph"
 description := "The graph project implements the com.keithalcock.graph package including the Graph class."
 
-// Last checked 2021-12-31
+// Last checked 2022-02-18
 val scala11 = "2.11.12" // up to 2.11.12
 val scala12 = "2.12.15" // up to 2.12.14
-val scala13 = "2.13.7"  // up to 2.13.7
-val scala3  = "3.1.0"   // up to 3.1.0
+val scala13 = "2.13.8"  // up to 2.13.8
+val scala2 = scala13
+val scala30 = "3.0.2"   // up to 3.0.2
+val scala31 = "3.1.1"   // up to 3.1.1
+val scala3 = scala31
 
 ThisBuild / crossScalaVersions := Seq(scala12, scala11, scala13, scala3)
-ThisBuild / scalaVersion := crossScalaVersions.value.head
+ThisBuild / scalaVersion := scala3 // crossScalaVersions.value.last
 
 resolvers ++= Seq(
 //  Resolvers.localResolver,  // Reserve for Two Six.
