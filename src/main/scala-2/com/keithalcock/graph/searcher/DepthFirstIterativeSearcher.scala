@@ -8,13 +8,22 @@ class DepthFirstIterativeSearcher[T] extends Searcher[T] {
 
   override def search(graph: Graph[T], start: T, end: T): Boolean = {
     val searched = mutable.Set.empty[T]
-    val queue = mutable.Queue(start)
+    val stack = mutable.Stack(start)
+
+    def popUntilEnd = {
+      while (stack.nonEmpty && stack.head != end) {
+        val key = stack.pop()
+        if (!searched(key)) {
+          searched += key
+          stack ++= graph(key)
+        }
+      }
+      stack
+    }
 
     require(isValid(graph))
     graph.contains(start) &&
         graph.contains(end) &&
-        queue.dropWhile { key =>
-          true
-        }.nonEmpty
+        popUntilEnd.nonEmpty
   }
 }
