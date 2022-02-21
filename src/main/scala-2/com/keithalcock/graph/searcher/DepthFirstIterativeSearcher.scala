@@ -15,7 +15,7 @@ class DepthFirstIterativeSearcher[T] extends Searcher[T] {
         val key = stack.pop()
         if (!searched(key)) {
           searched += key
-          stack ++= graph(key)
+          stack.pushAll(graph(key))
         }
       }
       stack

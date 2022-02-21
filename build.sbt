@@ -14,7 +14,7 @@ val scala31 = "3.1.1"   // up to 3.1.1
 val scala3 = scala31
 
 ThisBuild / crossScalaVersions := Seq(scala12, scala11, scala13, scala3)
-ThisBuild / scalaVersion := scala3 // crossScalaVersions.value.last
+ThisBuild / scalaVersion := crossScalaVersions.value.last
 
 resolvers ++= Seq(
 //  Resolvers.localResolver,  // Reserve for Two Six.
