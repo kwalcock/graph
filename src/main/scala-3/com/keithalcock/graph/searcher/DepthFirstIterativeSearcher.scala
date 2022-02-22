@@ -1,6 +1,7 @@
 package com.keithalcock.graph.searcher
 
 import com.keithalcock.graph.Graph
+import com.keithalcock.graph.lang._
 
 import scala.collection.mutable
 
