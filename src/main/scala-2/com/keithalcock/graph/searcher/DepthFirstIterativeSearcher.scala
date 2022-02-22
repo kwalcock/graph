@@ -1,8 +1,9 @@
 package com.keithalcock.graph.searcher
 
 import com.keithalcock.graph.Types.Graph
+import com.keithalcock.graph.lang._
 
-import scala.collection.mutable
+import collection.mutable
 
 class DepthFirstIterativeSearcher[T] extends Searcher[T] {
 
@@ -10,12 +11,12 @@ class DepthFirstIterativeSearcher[T] extends Searcher[T] {
     val searched = mutable.Set.empty[T]
     val stack = mutable.Stack(start)
 
-    def popUntilEnd = {
+    def popUntilEnd: mutable.Seq[T] = {
       while (stack.nonEmpty && stack.head != end) {
         val key = stack.pop()
         if (!searched(key)) {
           searched += key
-          stack.pushAll(graph(key))
+          stack ++= graph(key)
         }
       }
       stack
